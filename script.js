@@ -19,12 +19,12 @@ let operate = (num1, num2, operator) => {
 let clear = () => {
   num1 = 0;
   num2 = 0;
-  display.textContent = "";
  };
 
 let display = document.querySelector("#display");
 display.textContent = "999";
 
+let button0 = document.querySelector("#button0");
 let button1 = document.querySelector("#button1");
 let button2 = document.querySelector("#button2");
 let button3 = document.querySelector("#button3");
@@ -41,6 +41,7 @@ let buttonDivide = document.querySelector("#buttonDivide");
 let buttonC = document.querySelector("#buttonC");
 let buttonEquals = document.querySelector("#buttonEquals");
 
+button0.addEventListener("click", () => { display.textContent += "0"; });
 button1.addEventListener("click", () => { display.textContent += "1"; });
 button2.addEventListener("click", () => { display.textContent += "2"; });
 button3.addEventListener("click", () => { display.textContent += "3"; });
@@ -79,4 +80,5 @@ buttonDivide.addEventListener("click", () => {
 buttonEquals.addEventListener("click", () => {
   num2 = display.textContent;
   display.textContent = operate(num1, num2, operator);
+  clear();
 })
