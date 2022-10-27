@@ -18,7 +18,7 @@ let operate = (num1, num2, operator) => {
 let calculate = () => {
   if (num1 !== undefined) {
     num2 = display.textContent;
-    display.textContent = operate(num1, num2, operator);
+    display.textContent = round(operate(num1, num2, operator));
     num1 = display.textContent;
     flag = true;
   }
@@ -26,6 +26,10 @@ let calculate = () => {
     num1 = display.textContent;
     display.textContent = "";
   }
+}
+
+let round = (number) => {
+  return Math.round(number * 1000000) / 1000000;
 }
 
 let clear = () => {
@@ -131,6 +135,6 @@ buttonDivide.addEventListener("click", () => {
 });
 buttonEquals.addEventListener("click", () => {
   num2 = display.textContent;
-  display.textContent = operate(num1, num2, operator);
+  display.textContent = round(operate(num1, num2, operator));
   clear();
 })
