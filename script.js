@@ -18,13 +18,18 @@ let operate = (num1, num2, operator) => {
 let calculate = () => {
   if (num1 !== undefined) {
     num2 = display.textContent;
+    if (num2 === "0" && operator === "/") {
+      clear();
+      display.textContent = "ERROR";
+      return;
+    }
     display.textContent = round(operate(num1, num2, operator));
     num1 = display.textContent;
     flag = true;
   }
   else {
     num1 = display.textContent;
-    display.textContent = "";
+    flag = true;
   }
 }
 
@@ -57,56 +62,76 @@ let buttonDivide = document.querySelector("#buttonDivide");
 let buttonC = document.querySelector("#buttonC");
 let buttonEquals = document.querySelector("#buttonEquals");
 
-button0.addEventListener("click", () => { if (flag === true) {
-  display.textContent = "";
-  flag = false;
-}
-  display.textContent += "0"; });
-button1.addEventListener("click", () => { if (flag === true) {
-  display.textContent = "";
-  flag = false;
-}
-  display.textContent += "1"; });
-button2.addEventListener("click", () => { if (flag === true) {
-  display.textContent = "";
-  flag = false;
-}
-  display.textContent += "2"; });
-button3.addEventListener("click", () => { if (flag === true) {
-  display.textContent = "";
-  flag = false;
-}
-  display.textContent += "3"; });
-button4.addEventListener("click", () => { if (flag === true) {
-  display.textContent = "";
-  flag = false;
-}
-  display.textContent += "4"; });
-button5.addEventListener("click", () => { if (flag === true) {
-  display.textContent = "";
-  flag = false;
-}
-  display.textContent += "5"; });
-button6.addEventListener("click", () => { if (flag === true) {
-  display.textContent = "";
-  flag = false;
-}
-  display.textContent += "6"; });
-button7.addEventListener("click", () => { if (flag === true) {
-  display.textContent = "";
-  flag = false;
-}
-  display.textContent += "7"; });
-button8.addEventListener("click", () => { if (flag === true) {
-  display.textContent = "";
-  flag = false;
-}
-  display.textContent += "8"; });
-button9.addEventListener("click", () => { if (flag === true) {
-  display.textContent = "";
-  flag = false;
-}
-  display.textContent += "9"; });
+button0.addEventListener("click", () => {
+  if (flag === true) {
+    display.textContent = "";
+    flag = false;
+  }
+  display.textContent += "0";
+});
+button1.addEventListener("click", () => {
+  if (flag === true) {
+    display.textContent = "";
+    flag = false;
+  }
+  display.textContent += "1";
+});
+button2.addEventListener("click", () => {
+  if (flag === true) {
+    display.textContent = "";
+    flag = false;
+  }
+  display.textContent += "2";
+});
+button3.addEventListener("click", () => {
+  if (flag === true) {
+    display.textContent = "";
+    flag = false;
+  }
+  display.textContent += "3";
+});
+button4.addEventListener("click", () => {
+  if (flag === true) {
+    display.textContent = "";
+    flag = false;
+  }
+  display.textContent += "4";
+});
+button5.addEventListener("click", () => {
+  if (flag === true) {
+    display.textContent = "";
+    flag = false;
+  }
+  display.textContent += "5";
+});
+button6.addEventListener("click", () => {
+  if (flag === true) {
+    display.textContent = "";
+    flag = false;
+  }
+  display.textContent += "6";
+});
+button7.addEventListener("click", () => {
+  if (flag === true) {
+    display.textContent = "";
+    flag = false;
+  }
+  display.textContent += "7";
+});
+button8.addEventListener("click", () => {
+  if (flag === true) {
+    display.textContent = "";
+    flag = false;
+  }
+  display.textContent += "8";
+});
+button9.addEventListener("click", () => {
+  if (flag === true) {
+    display.textContent = "";
+    flag = false;
+  }
+  display.textContent += "9";
+});
 
 buttonC.addEventListener("click", () => {
   clear();
@@ -134,7 +159,7 @@ buttonDivide.addEventListener("click", () => {
   operator = "/";
 });
 buttonEquals.addEventListener("click", () => {
-  num2 = display.textContent;
-  display.textContent = round(operate(num1, num2, operator));
+  // num2 = display.textContent;
+  calculate();
   clear();
 })
