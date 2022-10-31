@@ -16,6 +16,7 @@ let operate = (num1, num2, operator) => {
 }
 
 let calculate = () => {
+  dotFlag = false;
   if (num1 !== undefined) {
     num2 = display.textContent;
     if (num2 === "0" && operator === "/") {
@@ -25,11 +26,11 @@ let calculate = () => {
     }
     display.textContent = round(operate(num1, num2, operator));
     num1 = display.textContent;
-    flag = true;
+    clearFlag = true;
   }
   else {
     num1 = display.textContent;
-    flag = true;
+    clearFlag = true;
   }
 }
 
@@ -42,8 +43,15 @@ let clear = () => {
   num2 = undefined;
 };
 
+let flagCheck = () => {
+  if (clearFlag === true) {
+    display.textContent = "";
+    clearFlag = false;
+  }
+}
+
 let display = document.querySelector("#display");
-display.textContent = "999";
+display.textContent = "0";
 
 let button0 = document.querySelector("#button0");
 let button1 = document.querySelector("#button1");
@@ -55,92 +63,75 @@ let button6 = document.querySelector("#button6");
 let button7 = document.querySelector("#button7");
 let button8 = document.querySelector("#button8");
 let button9 = document.querySelector("#button9");
+let buttonDot = document.querySelector("#buttonDot");
 let buttonPlus = document.querySelector("#buttonPlus");
 let buttonMinus = document.querySelector("#buttonMinus");
 let buttonMultiply = document.querySelector("#buttonMultiply");
 let buttonDivide = document.querySelector("#buttonDivide");
 let buttonC = document.querySelector("#buttonC");
 let buttonEquals = document.querySelector("#buttonEquals");
+let buttonBackspace = document.querySelector("#buttonBackspace");
 
 button0.addEventListener("click", () => {
-  if (flag === true) {
-    display.textContent = "";
-    flag = false;
-  }
+  flagCheck();
   display.textContent += "0";
 });
 button1.addEventListener("click", () => {
-  if (flag === true) {
-    display.textContent = "";
-    flag = false;
-  }
+  flagCheck();
   display.textContent += "1";
 });
 button2.addEventListener("click", () => {
-  if (flag === true) {
-    display.textContent = "";
-    flag = false;
-  }
+  flagCheck();
   display.textContent += "2";
 });
 button3.addEventListener("click", () => {
-  if (flag === true) {
-    display.textContent = "";
-    flag = false;
-  }
+  flagCheck();
   display.textContent += "3";
 });
 button4.addEventListener("click", () => {
-  if (flag === true) {
-    display.textContent = "";
-    flag = false;
-  }
+  flagCheck();
   display.textContent += "4";
 });
 button5.addEventListener("click", () => {
-  if (flag === true) {
-    display.textContent = "";
-    flag = false;
-  }
+  flagCheck();
   display.textContent += "5";
 });
 button6.addEventListener("click", () => {
-  if (flag === true) {
-    display.textContent = "";
-    flag = false;
-  }
+  flagCheck();
   display.textContent += "6";
 });
 button7.addEventListener("click", () => {
-  if (flag === true) {
-    display.textContent = "";
-    flag = false;
-  }
+  flagCheck();
   display.textContent += "7";
 });
 button8.addEventListener("click", () => {
-  if (flag === true) {
-    display.textContent = "";
-    flag = false;
-  }
+  flagCheck();
   display.textContent += "8";
 });
 button9.addEventListener("click", () => {
-  if (flag === true) {
-    display.textContent = "";
-    flag = false;
-  }
+  flagCheck();
   display.textContent += "9";
+});
+buttonDot.addEventListener("click", () => {
+  if (dotFlag === true) return;
+  flagCheck();
+  display.textContent += ".";
+  dotFlag = true;
 });
 
 buttonC.addEventListener("click", () => {
+  dotFlag = false;
   clear();
   display.textContent = ""
 });
+buttonBackspace.addEventListener("click", () => {
+  display.textContent = display.textContent.slice(0, -1);
+})
 
 let num1 = undefined;
 let num2 = undefined;
-let flag;
+let clearFlag = true;
+let dotFlag;
 let operator;
 buttonPlus.addEventListener("click", () => {
   calculate();
@@ -159,7 +150,6 @@ buttonDivide.addEventListener("click", () => {
   operator = "/";
 });
 buttonEquals.addEventListener("click", () => {
-  // num2 = display.textContent;
   calculate();
   clear();
 })
