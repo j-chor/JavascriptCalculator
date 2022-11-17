@@ -24,6 +24,8 @@ body {
 button {
   width: 23px;
   height: 23px;
+  line-height: 0;
+  padding: 0px 0px 2px 0px;
 }
 
 .buttons {
